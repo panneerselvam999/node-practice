@@ -108,6 +108,7 @@
 // const server = http.createServer((req, res) => {
 //   const url = req.url;
 //   if (url === "/") {
+//     res.setHeader("Content-type", "text/html");
 //     res.write("<html>");
 //     res.write("<head> <title> Login </title> </head>");
 //     res.write(
@@ -119,22 +120,21 @@
 //   }
 
 //   console.log(req.url);
+//   res.setHeader("Content-type", "text/html");
 //   res.write("<html>");
 //   res.write("<head> <title> Node JS </title> </head>");
 //   res.write("<body> <h1> Hello World </h1> </body>");
 //   res.write("</html>");
 //   res.write("panneer selvam");
 //   res.end();
-  
 // });
 // server.listen(PORT);
 // console.log("Server is running on : " + PORT);
 // console.log("Server is running on : " + PORT);
 // _________________________________________________________________________________________________
 
-
-
 const http = require("http");
+const fs = require("fs");
 const { text } = require("stream/consumers");
 const PORT = 3500;
 
@@ -142,6 +142,7 @@ const server = http.createServer((req, res) => {
   const url = req.url;
   const method = req.method;
   if (url === "/") {
+    res.setHeader("Content-type", "text/html");
     res.write("<html>");
     res.write("<head> <title> Login </title> </head>");
     res.write(
@@ -152,18 +153,22 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  if (url === '/message' && method == 'POST') {
-    
+  if (url === "/message" && method == "POST") {
+    fs.writeFileSync("first.txt", "create text file");
+    res.setHeader("Location", "/");
+    res.statusCode = 302;
+    return res.end();
+    // console.log("if messate post metho");
   }
 
   console.log(req.url);
+  res.setHeader("Content-type", "text/html");
   res.write("<html>");
   res.write("<head> <title> Node JS </title> </head>");
   res.write("<body> <h1> Hello World </h1> </body>");
   res.write("</html>");
   res.write("panneer selvam");
   res.end();
-  
 });
 server.listen(PORT);
 console.log("Server is running on : " + PORT);
