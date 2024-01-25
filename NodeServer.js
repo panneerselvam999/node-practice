@@ -415,6 +415,18 @@
 // });
 // server.listen(PORT);
 // console.log("Server is running on : " + PORT);
+// // _________________________________________________________________________________________________
+
+// const http = require("http");
+// const fs = require("fs");
+// // const { text } = require("stream/consumers");
+// const routes = require("./routes");
+// const PORT = 3500;
+
+// // const server = http.createServer((req, res) => {});
+// const server = http.createServer(routes);
+// server.listen(PORT);
+// console.log("Server is running on : " + PORT);
 // _________________________________________________________________________________________________
 
 const http = require("http");
@@ -423,7 +435,7 @@ const fs = require("fs");
 const routes = require("./routes");
 const PORT = 3500;
 
-// const server = http.createServer((req, res) => {});
-const server = http.createServer(routes);
+const server = http.createServer(routes.handler);
+console.log(routes.someText);
 server.listen(PORT);
 console.log("Server is running on : " + PORT);

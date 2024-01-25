@@ -45,3 +45,14 @@ const requestHandler = (req, res) => {
 };
 
 // module.exports = requestHandler;
+
+module.exports = {
+  handler: requestHandler,
+  someText: "Print text ;ldskjgf;ldskjgf;lkdsgj",
+};
+
+// exports.handler = requestHandler;
+// exports.someText = "Print some text";
+
+// module.exports.handler = requestHandler;
+// module.exports.someText = "print some text";
